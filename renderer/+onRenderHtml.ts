@@ -18,7 +18,7 @@ async function onRenderHtml(pageContext: PageContextBuiltIn & PageContext) {
 
   const { title, description, robots } = getPageTags(pageContext);
 
-  const { headTags, htmlAttrs, bodyAttrs, bodyTags } = await renderHeadToString(head)
+  const { headTags } = await renderHeadToString(head)
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html>
