@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { CurrencyDetail } from "./types";
-import { useSeoMeta } from "@vueuse/head";
+import { useSeoMeta, useServerSeoMeta } from "@vueuse/head";
 
 interface CurrencyDetail {
   amount: number
@@ -21,9 +21,15 @@ interface CurrencyDetail {
 const props = defineProps<CurrencyDetail>();
 
 useSeoMeta({
-  title: 'Currency Converter',
-  description: 'My Currency Converter Test',
-  ogDescription: `${ props.amount } was converted to ${ props.base } on ${ props.date }!`,
+  title: 'Currency Converter | CLIENT & SERVER',
+  description: 'My Currency Converter Test | CLIENT & SERVER',
+  ogDescription: `${ props.amount } was converted to ${ props.base } on ${ props.date }! | CLIENT & SERVER`,
+});
+
+useServerSeoMeta({
+  title: 'Currency Converter | SERVER',
+  description: 'My Currency Converter Test | SERVER',
+  ogDescription: `${ props.amount } was converted to ${ props.base } on ${ props.date }! | SERVER`,
 });
 
 
