@@ -3,6 +3,7 @@ import PageShell from './PageShell.vue';
 import type { Component, PageContext, PageProps } from './types';
 import { setPageContext } from './usePageContext';
 import { createPinia } from "pinia";
+import { createHead } from "@vueuse/head";
 
 export { createApp };
 
@@ -35,6 +36,10 @@ function createApp(pageContext: PageContext) {
 
   const store = createPinia();
   app.use(store);
+
+  const head = createHead();
+  app.use(head);
+
   // We use `app.changePage()` to do Client Routing, see `_default.page.client.js`
   objectAssign(app, {
     changePage: (pageContext: PageContext) => {
@@ -51,7 +56,7 @@ function createApp(pageContext: PageContext) {
   // Make `pageContext` accessible from any Vue component
   setPageContext(app, pageContextReactive);
 
-  return { app, store };
+  return { app, store, head };
 }
 
 // Same as `Object.assign()` but with type inference

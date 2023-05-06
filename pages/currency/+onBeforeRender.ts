@@ -5,7 +5,7 @@ import { RenderErrorPage } from "vite-plugin-ssr/RenderErrorPage";
 export default onBeforeRender;
 
 async function onBeforeRender(pageContext: PageContextBuiltIn) {
-  const { kategorieId } = pageContext.routeParams;
+  const { enteredAmount } = pageContext.routeParams;
   const { from, to } = pageContext.urlParsed.search;
 
   if (!from || !to) {
@@ -18,7 +18,7 @@ async function onBeforeRender(pageContext: PageContextBuiltIn) {
     });
   }
 
-  const response = await fetch(`https://api.frankfurter.app/latest?amount=${ kategorieId }&from=${ from }&to=${ to }`);
+  const response = await fetch(`https://api.frankfurter.app/latest?amount=${ enteredAmount }&from=${ from }&to=${ to }`);
   const { amount, base, date, rates } = (await response.json()) as CurrencyDetail;
 
   return {

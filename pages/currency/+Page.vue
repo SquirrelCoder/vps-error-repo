@@ -7,6 +7,7 @@
 
 <script setup lang="ts">
 import { CurrencyDetail } from "./types";
+import { useSeoMeta } from "@vueuse/head";
 
 interface CurrencyDetail {
   amount: number
@@ -17,6 +18,13 @@ interface CurrencyDetail {
   };
 }
 
-defineProps<CurrencyDetail>();
+const props = defineProps<CurrencyDetail>();
+
+useSeoMeta({
+  title: 'Currency Converter',
+  description: 'My Currency Converter Test',
+  ogDescription: `${ props.amount } was converted to ${ props.base } on ${ props.date }!`,
+});
+
 
 </script>

@@ -5,17 +5,17 @@ export default route;
 
 // We use a Route Function to implement advanced routing logic
 function route(pageContext: { urlPathname: string }) {
-  const result = resolveRoute('/c/@amount', pageContext.urlPathname);
+  const result = resolveRoute('/c/@enteredAmount', pageContext.urlPathname);
 
   if (!result.match) {
     return false
   }
 
-  const { amount } = result.routeParams;
+  const { enteredAmount } = result.routeParams;
 
-  if (!amount) {
+  if (!enteredAmount) {
     throw RenderErrorPage();
   }
 
-  return { routeParams: { amount } };
+  return { routeParams: { enteredAmount } };
 }
