@@ -11,10 +11,12 @@ let app: App<Element> & { changePage: (pageContext: PageContext) => void; };
 
 async function onRenderClient(pageContext: PageContextBuiltInClient & PageContext) {
   if (!app) {
-    const instance = createApp(pageContext)
-    app = instance.app
-    instance.store.state.value = pageContext.initialStoreState
-    app.mount('#app')
+    const instance = createApp(pageContext);
+    app = instance.app;
+
+    instance.store.state.value = pageContext.initialStoreState;
+
+    app.mount('#app');
   } else {
     app.changePage(pageContext);
   }
