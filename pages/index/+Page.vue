@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Pinia Example</h1>
     <h1>Hello {{ name }}</h1>
     <span>Counter that keeps its state on <strong>navigation</strong>!</span>:
     <button type="button" @click="increment">Counter {{ doubleCount }}</button>
